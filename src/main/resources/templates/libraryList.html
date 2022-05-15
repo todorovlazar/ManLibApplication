@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Библиотеки</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="webjars/bootstrap/5.1.3/css/bootstrap.css"
+          rel="stylesheet">
+</head>
+
+<body>
+<script src="webjars/bootstrap/5.1.3/js/bootstrap.bundle.js"></script>
+
+<div class="navbar-light">
+    <nav class="navbar navbar-expand-md container">
+        <!--    <a class="navbar-brand" href="#">ManLib</a>-->
+<!--        <a href="/"><img class="navbar-brand" src="ManLib.png" style="height: 120px; width: 120px"></a>-->
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" style="font-size: 15px; margin-right: 10px;">Почетна</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bg-danger text-white rounded-3" href="/logout" style="font-size: 15px; margin-right: 10px;">Одјави се</a>
+                </li>
+            </ul>
+        </div>
+        <!--      <div class="collapse navbar-collapse justify-content-end">-->
+        <!--          <ul class="navbar-nav">-->
+
+        <!--          </ul>-->
+        <!--      </div>-->
+    </nav>
+</div>
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <form action="" class="col-3" style="display: inline">-->
+<!--            <div class="input-group">-->
+<!--                <button type="submit" class="input-group-text btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">-->
+<!--                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
+<!--                </svg></button>-->
+<!--                <input type="text" class="form-control" placeholder="Пронајди запис">-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container mb-lg-5" style="margin-top: 20px;">
+    <div>
+        <!-- EmployeeController.showAdd (Only ADMIN can see this element)-->
+        <a class="btn btn-danger mb-4" href="/libraries/add">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+            Додади нова библиотека
+        </a>
+        <!-- EmployeeController.showBookList (Only ADMIN can see this element)-->
+        <a class="btn btn-info float-end text-white" href="/books">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-server" viewBox="0 0 16 16">
+                <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"/>
+                <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"/>
+                <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
+            </svg>
+            База на книги
+        </a>
+        <a class="btn btn-info float-end text-white" href="/bookAuthors" style="margin-right: 10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-server" viewBox="0 0 16 16">
+                <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"/>
+                <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"/>
+                <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
+            </svg>
+            База на автори
+        </a>
+        <a class="btn btn-info float-end text-white" href="/users" style="margin-right: 10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+            </svg>
+            База на читатели
+        </a>
+    </div>
+    <table class="table table-striped">
+        <thead class="bg-danger text-white">
+            <tr>
+                <th>Име на библиотека</th>
+                <th>Локација на библиотека</th>
+                <th></th><th></th>
+            </tr>
+        </thead>
+        <!-- For each employees you should have one <tr> like below -->
+        <tbody>
+            <tr th:each="lib: ${libraryList}" class="item">
+                <td th:value="${lib.getName()}" th:text="${lib.getName()}">Има на библиотека</td>
+                <td th:value="${lib.getLocation()}" th:text="${lib.getLocation()}">Локација на библиотека</td>
+<!--                Ова ќе оди како детали на книгата, каде што секоја книга ќе има подетални информации за неа и кои книги ги содржи-->
+<!--                <td th:each="libBooks: ${lib.getBooks()}">-->
+<!--                    &lt;!&ndash; For each of the employee.skills show the following element&ndash;&gt;-->
+<!--                    <span class="item-rel" th:value="${libBooks.getId()}" th:text="${libBooks.getName()}">Книги на библиотеката</span>-->
+<!--                </td>-->
+    <!--            <td>-->
+    <!--                &lt;!&ndash; EmployeeController.delete (Only ADMIN can see this element)&ndash;&gt;-->
+    <!--                <form th:method="POST" th:action="@{'/employees/{id}/delete' (id=${employee.getId()})}" sec:authorize="hasRole('ROLE_ADMIN')">-->
+    <!--                    <button type="submit" class="delete-item">Delete</button>-->
+    <!--                </form>-->
+    <!--                &lt;!&ndash; EmployeeController.showEdit (Only ADMIN can see this element)&ndash;&gt;-->
+    <!--                <a class="edit-item" th:href="@{'/employees/{id}' (id=${employee.getId()})}" sec:authorize="hasRole('ROLE_ADMIN')">Edit</a>-->
+    <!--            </td>-->
+                <td></td>
+                <td>
+                    <a th:href="@{'/libraries/{id}/edit' (id=${lib.getId()})}"
+                       class="btn btn-primary text-white" style="margin-right: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                        Измени
+                    </a>
+                    <form th:action="@{'/libraries/{id}/delete' (id=${lib.getId()})}"
+                          th:method="POST" style="display: inline">
+                        <button type="submit" class="btn btn-danger text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                            Избриши
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<!--    <div th:each="lib: ${libraryList}" class="card" style="width: 18rem;">-->
+<!--        <img src="..." class="card-img-top" alt="...">-->
+<!--        <div class="card-body">-->
+<!--            <h5 class="card-title">Card title</h5>-->
+<!--            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="container-xl">-->
+<!--        <a class="btn btn-secondary float-end text-white" href="/">Назад кон Почетна</a>-->
+<!--    </div>-->
+</div>
+<div class="container">
+    <a href="/libraries/map" class="btn btn-danger text-white" style="float: right">Мапа на библиотеки</a>
+</div>
+</body>
+</html>
