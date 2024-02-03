@@ -43,4 +43,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: lazartodorov/kiii-project:latest
+          tags: lazartodorov/kiii-project:v1.0
