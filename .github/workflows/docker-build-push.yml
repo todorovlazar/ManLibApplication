@@ -43,4 +43,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: lazartodorov/kiii-project:v1.0
+          tags: lazartodorov/kiii-project:${{ github.sha }}
