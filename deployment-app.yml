@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: deploy
+  name: manlibapplication
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: manlibapplication
+  template:
+    metadata:
+      labels:
+        app: manlibapplication
+    spec:
+      containers:
+      - name: manlibapplication
+        image: lazartodorov/kiii-project:v1.0
+        ports:
+        - containerPort: 9095
+        envFrom:
+        - secretRef:
+            name: manlib-db-secrets
+        volumeMounts:
+        - name: config-volume
+          mountPath: "/app"
+          readOnly: true
+      volumes:
+      - name: config-volume
+        configMap:
+          name: manlib-config

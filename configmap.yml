@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: deploy
+  name: manlib-config
+data:
+  application.properties: |-
+    server.port=9095
+    spring.mvc.hiddenmethod.filter.enabled=true
+    spring.datasource.url=jdbc:postgresql://postgres-manlib-db:5432/${POSTGRES_DB:manlibdb}
+    spring.datasource.username=${POSTGRES_USER:postgres}
+    spring.datasource.password=${POSTGRES_PASSWORD:postgres}
+
+    spring.datasource.hikari.connectionTimeout=20000
+    spring.datasource.hikari.maximumPoolSize=5
+    spring.datasource.driver-class-name=org.postgresql.Driver
+
+    spring.jpa.show-sql=true
+
+    spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQL95Dialect
+    spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+    spring.jpa.properties.hibernate.globally_quoted_identifiers=true
+
+    spring.jpa.hibernate.ddl-auto=update
+
+    spring.thymeleaf.cache=false
+
+    spring.mail.host=smtp.gmail.com
+    spring.mail.port=587
+    spring.mail.username=lazar.todorov.biz@gmail.com
+    spring.mail.password=dujrlhvpkuuorojy
+    spring.mail.properties.mail.smtp.auth=true
+    spring.mail.properties.mail.smtp.starttls.enable=true

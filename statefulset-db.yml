@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: deploy
+  name: postgres-manlib-db
+spec:
+  serviceName: postgres-manlib-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-manlib-db
+  template:
+    metadata:
+      labels:
+        app: postgres-manlib-db
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        ports:
+        - containerPort: 5434
+        envFrom:
+        - secretRef:
+            name: manlib-db-secrets
