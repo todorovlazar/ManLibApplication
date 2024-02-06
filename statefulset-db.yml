@@ -17,8 +17,23 @@ spec:
       containers:
       - name: postgres
         image: postgres:latest
+        volumeMounts:
+        - name: postgres-db-disk
+          mountPath: /data
         ports:
         - containerPort: 5434
         envFrom:
         - secretRef:
             name: manlib-db-secrets
+      volumes:
+      - name: postgres-db-disk
+        persistentVolumeClaim:
+          claimName: postgres-db-disk
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-db-disk
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 25Gi
